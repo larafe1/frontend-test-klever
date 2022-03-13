@@ -1,8 +1,9 @@
 import { Text, TokensTableItem } from '@/components';
+import type { TokensTableProps } from '@/types';
 
 import * as S from './styles';
 
-export const TokensTable = () => {
+export const TokensTable = ({ data }: TokensTableProps) => {
   return (
     <S.Wrapper>
       <S.Headers>
@@ -11,9 +12,13 @@ export const TokensTable = () => {
       </S.Headers>
 
       <S.Content>
-        <TokensTableItem name="KLV" balanceValue="10,250.50" />
-        <TokensTableItem name="ETH" balanceValue="24,436.68" />
-        <TokensTableItem name="BTC" balanceValue="2" />
+        {data.map((token) => (
+          <TokensTableItem
+            key={token.symbol}
+            symbol={token.symbol}
+            balanceValue={token.balance}
+          />
+        ))}
       </S.Content>
     </S.Wrapper>
   );

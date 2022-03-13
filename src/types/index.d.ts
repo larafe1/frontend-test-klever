@@ -2,6 +2,25 @@ import { ReactNode } from 'react';
 
 import { Control } from 'react-hook-form';
 
+export type Token = {
+  symbol: string;
+  balance: string;
+};
+
+export type WalletContextProps = {
+  isLoading: boolean;
+  wallet: Token[];
+  token: Token;
+  addTokenToWallet: (payload: Token) => Promise<void>;
+  editTokenInWallet: (payload: Token) => Promise<void>;
+  removeTokenFromWallet: (symbol: string) => Promise<void>;
+  getTokenBySymbol: (symbol: string) => Promise<void>;
+};
+
+export type ProviderProps = {
+  children: ReactNode;
+};
+
 type ButtonType = 'submit' | 'reset' | 'button';
 type Colors = 'primary' | 'error' | 'warning';
 
@@ -16,7 +35,16 @@ export type ButtonProps = {
 export type InputProps = {
   control: Control;
   name: string;
+  defaultValue?: string;
   error: string;
+};
+
+export type ModalProps = {
+  title: string;
+  content: string;
+  isOpen: boolean;
+  onClose: () => void;
+  onConfirm: () => void;
 };
 
 export type WalletNameProps = {
@@ -29,8 +57,12 @@ export type TextProps = {
   isTitle?: boolean;
 };
 
+export type TokensTableProps = {
+  data: Token[];
+};
+
 export type TokensTableItemProps = {
-  name: string;
+  symbol: string;
   balanceValue: string;
 };
 

@@ -2,18 +2,21 @@ import Link from 'next/link';
 
 import { Text } from '@/components';
 import type { TokensTableItemProps } from '@/types';
+import { formatCurrency } from '@/utils';
 
 import * as S from './styles';
 
 export const TokensTableItem = ({
-  name,
+  symbol,
   balanceValue
 }: TokensTableItemProps) => {
+  const parsedUrl = `/edit-token/${symbol}`;
+
   return (
-    <Link href="/edit-token" passHref>
+    <Link href={parsedUrl} passHref>
       <S.Wrapper>
-        <Text isTitle>{name}</Text>
-        <Text isTitle>{balanceValue}</Text>
+        <Text isTitle>{symbol}</Text>
+        <Text isTitle>{formatCurrency(balanceValue)}</Text>
       </S.Wrapper>
     </Link>
   );

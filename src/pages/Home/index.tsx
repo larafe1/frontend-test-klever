@@ -2,11 +2,14 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { Logo, WalletName, Button, TokensTable } from '@/components';
+import { useWallet } from '@/hooks';
 
 import * as S from './styles';
 
 const Home = () => {
   const { push } = useRouter();
+
+  const { isLoading, wallet } = useWallet();
 
   const handleClick = () => {
     push('/add-token');
@@ -23,16 +26,20 @@ const Home = () => {
           <Logo />
         </S.Header>
 
-        <S.Body>
-          <S.WalletHeader>
-            <WalletName name="Wish Wallet" />
-            <Button rounded title="Add Token" onClick={handleClick} />
-          </S.WalletHeader>
+        {isLoading ? (
+          <span>Loading...</span>
+        ) : (
+          <S.Body>
+            <S.WalletHeader>
+              <WalletName name="Wish Wallet" />
+              <Button rounded title="Add Token" onClick={handleClick} />
+            </S.WalletHeader>
 
-          <S.WalletContent>
-            <TokensTable />
-          </S.WalletContent>
-        </S.Body>
+            <S.WalletContent>
+              <TokensTable data={wallet} />
+            </S.WalletContent>
+          </S.Body>
+        )}
       </S.Wrapper>
     </>
   );

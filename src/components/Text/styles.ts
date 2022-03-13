@@ -5,7 +5,6 @@ import type { TextProps } from '@/types';
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
 `;
 
 export const Title = styled.h1<TextProps>`
@@ -26,6 +25,8 @@ export const Title = styled.h1<TextProps>`
 export const Underline = styled.div`
   width: 75%;
   height: 2px;
+
+  align-self: flex-end;
 
   margin-top: 1rem;
 

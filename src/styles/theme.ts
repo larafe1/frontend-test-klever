@@ -5,6 +5,7 @@ export const theme = {
     primary: '#bc6ff1',
     primaryDark: '#892cdc',
     shape: '#fff',
+    black: '#000',
     shapeDark: '#ccc',
     warning: '#ffc93c',
     error: '#e83f5b'

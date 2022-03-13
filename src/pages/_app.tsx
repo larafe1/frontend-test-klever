@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import { ThemeProvider } from 'styled-components';
 
+import { WalletProvider } from '@/hooks';
 import { theme, GlobalStyle } from '@/styles';
 
 function App({ Component, pageProps }: AppProps) {
@@ -17,8 +18,10 @@ function App({ Component, pageProps }: AppProps) {
         />
       </Head>
 
-      <GlobalStyle />
-      <Component {...pageProps} />
+      <WalletProvider>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </WalletProvider>
     </ThemeProvider>
   );
 }
