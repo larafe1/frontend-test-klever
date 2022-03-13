@@ -9,10 +9,9 @@ import { useForm } from 'react-hook-form';
 import { Logo, WalletName, Text, Button, Input, Modal } from '@/components';
 import { MODAL_MSG_TOKEN_DUPLICITY } from '@/constants';
 import { useWallet } from '@/hooks';
+import * as S from '@/styles/pages/AddToken.styles';
 import type { FormData } from '@/types';
 import { tokenSchema } from '@/utils';
-
-import * as S from './styles';
 
 const AddToken = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

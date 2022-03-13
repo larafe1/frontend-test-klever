@@ -20,10 +20,9 @@ import {
   MODAL_MSG_TOKEN_DUPLICITY
 } from '@/constants';
 import { useWallet } from '@/hooks';
+import * as S from '@/styles/pages/EditToken.styles';
 import type { ModalMsgProps, FormData } from '@/types';
 import { tokenSchema } from '@/utils';
-
-import * as S from './styles';
 
 const EditToken = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

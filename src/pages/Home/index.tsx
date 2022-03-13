@@ -3,8 +3,7 @@ import { useRouter } from 'next/router';
 
 import { Logo, Loading, WalletName, Button, TokensTable } from '@/components';
 import { useWallet } from '@/hooks';
-
-import * as S from './styles';
+import * as S from '@/styles/pages/Home.styles';
 
 const Home = () => {
   const { push } = useRouter();
