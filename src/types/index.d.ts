@@ -14,7 +14,7 @@ export type WalletContextProps = {
   addTokenToWallet: (payload: Token) => Promise<void>;
   editTokenInWallet: (payload: Token) => Promise<void>;
   removeTokenFromWallet: (symbol: string) => Promise<void>;
-  getTokenBySymbol: (symbol: string) => Promise<void>;
+  getTokenBySymbol: (symbol: string) => Promise<Token | undefined>;
 };
 
 export type ProviderProps = {

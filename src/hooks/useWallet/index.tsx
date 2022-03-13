@@ -14,8 +14,8 @@ const WalletProvider = ({ children }: ProviderProps) => {
   const addTokenToWallet = async (payload: Token) => {
     try {
       setIsLoading(true);
-      await getTokenBySymbol(payload.symbol);
-      if (token) throw new Error('Token already exists.');
+      const tokenAlreadyExists = await getTokenBySymbol(payload.symbol);
+      if (tokenAlreadyExists) throw new Error('Token already exists.');
 
       const updatedWallet = [...wallet, payload];
       setWallet(updatedWallet);
@@ -34,9 +34,6 @@ const WalletProvider = ({ children }: ProviderProps) => {
   const editTokenInWallet = async (payload: Token) => {
     try {
       setIsLoading(true);
-      await getTokenBySymbol(payload.symbol);
-      if (token) throw new Error('Token symbol must be unique.');
-
       const updatedWallet = wallet.map((token) =>
         token.symbol === payload.symbol ? payload : token
       );
@@ -47,7 +44,6 @@ const WalletProvider = ({ children }: ProviderProps) => {
       );
     } catch (err) {
       console.error(err);
-      throw err;
     } finally {
       setIsLoading(false);
     }
@@ -74,7 +70,9 @@ const WalletProvider = ({ children }: ProviderProps) => {
       setIsLoading(true);
       const targetToken = wallet.find((token) => token.symbol === symbol);
       if (!targetToken) throw new Error('Token not found');
+
       setToken(targetToken);
+      return targetToken;
     } catch (err) {
       console.error(err);
     } finally {

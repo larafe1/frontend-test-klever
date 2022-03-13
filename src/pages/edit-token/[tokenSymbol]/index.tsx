@@ -58,6 +58,7 @@ const EditToken = () => {
       handleGoBack();
       reset();
     } catch (err) {
+      console.error(err);
       setModalMsg(MODAL_MSG_TOKEN_DUPLICITY);
       setIsModalOpen(true);
     }

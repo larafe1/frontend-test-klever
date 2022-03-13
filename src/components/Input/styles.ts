@@ -17,6 +17,8 @@ export const Input = styled.input<Pick<InputProps, 'error'>>`
       : `2px solid ${theme.colors.shape}`};
   border-radius: ${({ theme }) => theme.shapes.rounded};
 
+  position: relative;
+
   margin: 1rem 0;
 
   transition: all ${({ theme }) => theme.transitions.default};
