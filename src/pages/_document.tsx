@@ -5,18 +5,16 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="shortcut icon" href="favicon.png" type="img/png" />
+          <link rel="shortcut icon" href="klever-icon.png" type="img/png" />
 
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap"
             rel="stylesheet"
           />
         </Head>
+
         <body>
           <Main />
           <NextScript />
