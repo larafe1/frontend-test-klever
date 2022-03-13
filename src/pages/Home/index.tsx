@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { Logo, WalletName, Button, TokensTable } from '@/components';
+import { Logo, Loading, WalletName, Button, TokensTable } from '@/components';
 import { useWallet } from '@/hooks';
 
 import * as S from './styles';
@@ -27,7 +27,7 @@ const Home = () => {
         </S.Header>
 
         {isLoading ? (
-          <span>Loading...</span>
+          <Loading />
         ) : (
           <S.Body>
             <S.WalletHeader>

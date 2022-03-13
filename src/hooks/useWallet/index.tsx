@@ -1,37 +1,22 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 
 import config from '@/config';
+import { DEFAULT_WALLET } from '@/constants';
 import { WalletContextProps, ProviderProps, Token } from '@/types';
-
-const initalWalletState = [
-  {
-    symbol: 'BTC',
-    balance: '2'
-  },
-  {
-    symbol: 'ETH',
-    balance: '246439.87'
-  },
-  {
-    symbol: 'SOL',
-    balance: '6405481.10'
-  },
-  {
-    symbol: 'KLV',
-    balance: '387129.70'
-  }
-];
 
 const WalletContext = createContext({} as WalletContextProps);
 
 const WalletProvider = ({ children }: ProviderProps) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [wallet, setWallet] = useState(initalWalletState as Token[]);
+  const [wallet, setWallet] = useState(DEFAULT_WALLET as Token[]);
   const [token, setToken] = useState({} as Token);
 
   const addTokenToWallet = async (payload: Token) => {
     try {
       setIsLoading(true);
+      await getTokenBySymbol(payload.symbol);
+      if (token) throw new Error('Token already exists.');
+
       const updatedWallet = [...wallet, payload];
       setWallet(updatedWallet);
       localStorage.setItem(
@@ -40,6 +25,7 @@ const WalletProvider = ({ children }: ProviderProps) => {
       );
     } catch (err) {
       console.error(err);
+      throw err;
     } finally {
       setIsLoading(false);
     }
@@ -48,6 +34,9 @@ const WalletProvider = ({ children }: ProviderProps) => {
   const editTokenInWallet = async (payload: Token) => {
     try {
       setIsLoading(true);
+      await getTokenBySymbol(payload.symbol);
+      if (token) throw new Error('Token symbol must be unique.');
+
       const updatedWallet = wallet.map((token) =>
         token.symbol === payload.symbol ? payload : token
       );
@@ -58,6 +47,7 @@ const WalletProvider = ({ children }: ProviderProps) => {
       );
     } catch (err) {
       console.error(err);
+      throw err;
     } finally {
       setIsLoading(false);
     }

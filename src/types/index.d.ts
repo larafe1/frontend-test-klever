@@ -40,11 +40,20 @@ export type InputProps = {
 };
 
 export type ModalProps = {
+  multipleActions?: boolean;
   title: string;
   content: string;
   isOpen: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   onConfirm: () => void;
+};
+
+type ModalExceptions = 'DELETION' | 'DUPLICITY';
+
+export type ModalMsgProps = {
+  exception: ModalExceptions;
+  title: string;
+  content: string;
 };
 
 export type WalletNameProps = {
@@ -66,7 +75,7 @@ export type TokensTableItemProps = {
   balanceValue: string;
 };
 
-export type EditTokenFormData = {
+export type FormData = {
   symbol: string;
   balance: string;
 };

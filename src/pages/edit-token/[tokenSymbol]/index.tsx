@@ -5,25 +5,29 @@ import { useRouter } from 'next/router';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import * as Yup from 'yup';
 
-import { Modal, Logo, WalletName, Text, Button, Input } from '@/components';
+import {
+  Modal,
+  Logo,
+  Loading,
+  WalletName,
+  Text,
+  Button,
+  Input
+} from '@/components';
+import {
+  MODAL_MSG_TOKEN_DELETION,
+  MODAL_MSG_TOKEN_DUPLICITY
+} from '@/constants';
 import { useWallet } from '@/hooks';
-import type { EditTokenFormData } from '@/types';
+import type { ModalMsgProps, FormData } from '@/types';
+import { tokenSchema } from '@/utils';
 
 import * as S from './styles';
 
-const schema = Yup.object().shape({
-  symbol: Yup.string()
-    .max(3, 'Must be 3 characters or less')
-    .required('Token symbol is required'),
-  balance: Yup.number()
-    .moreThan(0, 'Token balance must be greater than 0')
-    .required('Token balance is required')
-});
-
 const EditToken = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMsg, setModalMsg] = useState({} as ModalMsgProps);
 
   const { query, back } = useRouter();
   const {
@@ -31,7 +35,7 @@ const EditToken = () => {
     handleSubmit,
     reset,
     formState: { errors }
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(tokenSchema) });
 
   const {
     isLoading,
@@ -45,14 +49,19 @@ const EditToken = () => {
     back();
   };
 
-  const handleExclusionModalVisibility = () => {
+  const handleNotificationModalVisibility = () => {
     setIsModalOpen(!isModalOpen);
   };
 
-  const handleEditToken = async (token: EditTokenFormData) => {
-    await editTokenInWallet(token);
-    reset();
-    handleGoBack();
+  const handleEditToken = async (token: FormData) => {
+    try {
+      await editTokenInWallet(token);
+      handleGoBack();
+      reset();
+    } catch (err) {
+      setModalMsg(MODAL_MSG_TOKEN_DUPLICITY);
+      setIsModalOpen(true);
+    }
   };
 
   const handleRemoveToken = async () => {
@@ -71,11 +80,16 @@ const EditToken = () => {
       </Head>
 
       <Modal
-        title="Deletion Confirmation"
-        content="Have you sure you want to remove this token from your wallet?"
+        multipleActions={modalMsg.exception === 'DELETION'}
+        title={modalMsg.title}
+        content={modalMsg.content}
         isOpen={isModalOpen}
-        onClose={handleExclusionModalVisibility}
-        onConfirm={handleRemoveToken}
+        onClose={handleNotificationModalVisibility}
+        onConfirm={
+          modalMsg.exception === 'DELETION'
+            ? handleRemoveToken
+            : handleNotificationModalVisibility
+        }
       />
 
       <S.Wrapper>
@@ -89,7 +103,7 @@ const EditToken = () => {
           {isLoading ||
           !query.tokenSymbol ||
           query.tokenSymbol !== token.symbol ? (
-            <span>Loading...</span>
+            <Loading />
           ) : (
             <S.Content>
               <S.ContentHeader>
@@ -120,7 +134,10 @@ const EditToken = () => {
                   <Button
                     rounded
                     title="Remove"
-                    onClick={handleExclusionModalVisibility}
+                    onClick={() => {
+                      setModalMsg(MODAL_MSG_TOKEN_DELETION);
+                      handleNotificationModalVisibility();
+                    }}
                     color="error"
                   />
                   <Button rounded type="submit" title="Save" />

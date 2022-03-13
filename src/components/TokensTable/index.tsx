@@ -12,13 +12,19 @@ export const TokensTable = ({ data }: TokensTableProps) => {
       </S.Headers>
 
       <S.Content>
-        {data.map((token) => (
-          <TokensTableItem
-            key={token.symbol}
-            symbol={token.symbol}
-            balanceValue={token.balance}
-          />
-        ))}
+        {data.length ? (
+          data.map((token) => (
+            <TokensTableItem
+              key={token.symbol}
+              symbol={token.symbol}
+              balanceValue={token.balance}
+            />
+          ))
+        ) : (
+          <S.NoTokensWrapper>
+            <Text>No tokens was found in your wallet. Try to add some!</Text>
+          </S.NoTokensWrapper>
+        )}
       </S.Content>
     </S.Wrapper>
   );

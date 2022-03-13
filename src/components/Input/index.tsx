@@ -14,7 +14,7 @@ export const Input = ({ control, name, defaultValue, error }: InputProps) => {
         render={({ field: { value, onChange } }) => (
           <S.Input
             value={value || ''}
-            onChange={({ target }) => onChange(target.value)}
+            onChange={({ target }) => onChange(target.value.toUpperCase())}
             error={error}
           />
         )}

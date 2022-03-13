@@ -10,4 +10,63 @@ export const Wrapper = styled.div`
   background: ${({ theme }) => theme.colors.background};
 `;
 
-export const Title = styled.h1``;
+export const Header = styled.div`
+  width: 100%;
+  height: 18rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Body = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 4rem;
+`;
+
+export const Content = styled.div`
+  width: 40%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 8rem;
+`;
+
+export const ContentHeader = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const Form = styled.form`
+  margin-top: 2rem;
+`;
+
+export const InputWrapper = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  margin-top: 3rem;
+`;
+
+export const ButtonWrapper = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: flex;
+  justify-content: flex-end;
+
+  margin-top: 4rem;
+`;

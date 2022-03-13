@@ -24,3 +24,7 @@ export const Content = styled.div`
 
   margin-top: 5rem;
 `;
+
+export const NoTokensWrapper = styled.div`
+  margin-top: 7rem;
+`;

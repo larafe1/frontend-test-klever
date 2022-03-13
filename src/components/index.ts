@@ -1,5 +1,6 @@
 export * from './Button';
 export * from './Input';
+export * from './Loading';
 export * from './Logo';
 export * from './Modal';
 export * from './Star';

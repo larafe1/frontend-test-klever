@@ -13,8 +13,8 @@ export const Input = styled.input<Pick<InputProps, 'error'>>`
 
   border: ${({ error, theme }) =>
     error
-      ? `1px solid ${theme.colors.error}`
-      : `1px solid ${theme.colors.shape}`};
+      ? `2px solid ${theme.colors.error}`
+      : `2px solid ${theme.colors.shape}`};
   border-radius: ${({ theme }) => theme.shapes.rounded};
 
   margin: 1rem 0;
@@ -22,7 +22,7 @@ export const Input = styled.input<Pick<InputProps, 'error'>>`
   transition: all ${({ theme }) => theme.transitions.default};
 
   &:focus {
-    border: 1px solid ${({ theme }) => theme.colors.primaryDark};
+    border: 2px solid ${({ theme }) => theme.colors.primaryDark};
   }
 `;
 

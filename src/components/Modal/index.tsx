@@ -7,6 +7,7 @@ export const Modal = ({
   isOpen,
   onClose,
   onConfirm,
+  multipleActions,
   title,
   content
 }: ModalProps) => {
@@ -24,12 +25,14 @@ export const Modal = ({
               <Text>{content}</Text>
 
               <S.ButtonWrapper>
-                <Button
-                  rounded
-                  title="Cancel"
-                  color="primary"
-                  onClick={onClose}
-                />
+                {multipleActions && (
+                  <Button
+                    rounded
+                    title="Cancel"
+                    color="primary"
+                    onClick={onClose}
+                  />
+                )}
                 <Button
                   rounded
                   title="Confirm"
