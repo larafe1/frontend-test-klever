@@ -27,6 +27,8 @@ export const Body = styled.div`
   justify-content: center;
   align-items: center;
 
+  overflow: hidden;
+
   margin-top: 4rem;
 `;
 
@@ -43,6 +45,8 @@ export const WalletContent = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  overflow-y: auto;
 
   margin-top: 10rem;
 `;
