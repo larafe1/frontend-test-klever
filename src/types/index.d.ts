@@ -48,7 +48,7 @@ export type ModalProps = {
   onConfirm: () => void;
 };
 
-type ModalExceptions = 'DELETION' | 'DUPLICITY';
+type ModalExceptions = 'DELETION' | 'NON_EXISTENCE' | 'DUPLICITY';
 
 export type ModalMsgProps = {
   exception: ModalExceptions;

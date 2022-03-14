@@ -25,6 +25,12 @@ export const MODAL_MSG_TOKEN_DELETION: ModalMsgProps = {
   content: 'Are you sure you want to remove this token from your wallet?'
 };
 
+export const MODAL_MSG_TOKEN_NON_EXISTENCE: ModalMsgProps = {
+  exception: 'NON_EXISTENCE',
+  title: 'Token Non-Existence',
+  content: 'This token was not found in your wallet. Try adding it!'
+};
+
 export const MODAL_MSG_TOKEN_DUPLICITY: ModalMsgProps = {
   exception: 'DUPLICITY',
   title: 'Tokens Must Be Unique',

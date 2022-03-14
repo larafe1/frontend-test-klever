@@ -17,7 +17,7 @@ import {
 } from '@/components';
 import {
   MODAL_MSG_TOKEN_DELETION,
-  MODAL_MSG_TOKEN_DUPLICITY
+  MODAL_MSG_TOKEN_NON_EXISTENCE
 } from '@/constants';
 import { useWallet } from '@/hooks';
 import * as S from '@/styles/pages/EditToken.styles';
@@ -54,12 +54,15 @@ const EditToken = () => {
 
   const handleEditToken = async (token: FormData) => {
     try {
+      const tokenExists = await getTokenBySymbol(token.symbol);
+      if (!tokenExists) throw new Error('Token was not found in wallet');
+
       await editTokenInWallet(token);
       handleGoBack();
       reset();
     } catch (err) {
       console.error(err);
-      setModalMsg(MODAL_MSG_TOKEN_DUPLICITY);
+      setModalMsg(MODAL_MSG_TOKEN_NON_EXISTENCE);
       setIsModalOpen(true);
     }
   };
