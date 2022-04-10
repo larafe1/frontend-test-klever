@@ -9,10 +9,15 @@ export const Wrapper = styled.div`
 `;
 
 export const Headers = styled.div`
-  width: 60%;
+  width: 38.5%;
 
   display: flex;
   justify-content: space-between;
+
+  position: fixed;
+  padding: 0 3rem 3rem 3rem;
+
+  background-color: ${({ theme }) => theme.colors.background};
 `;
 
 export const Content = styled.div`
@@ -22,7 +27,8 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin-top: 5rem;
+  margin-top: 6rem;
+  padding-bottom: 1rem;
 `;
 
 export const NoTokensWrapper = styled.div`
