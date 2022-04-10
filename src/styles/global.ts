@@ -35,6 +35,7 @@ export const GlobalStyle = createGlobalStyle`
       font-size: ${theme.fonts.sizes.medium};
 
       color: ${theme.colors.text};
+      background-color: ${theme.colors.background};
     }
   `}
 `;
