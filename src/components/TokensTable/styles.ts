@@ -18,6 +18,16 @@ export const Headers = styled.div`
   padding: 0 3rem 3rem 3rem;
 
   background-color: ${({ theme }) => theme.colors.background};
+
+  @media (max-width: 1120px) {
+    width: 60%;
+  }
+  @media (max-width: 810px) {
+    width: 90%;
+  }
+  @media (max-width: 630px) {
+    width: 100%;
+  }
 `;
 
 export const Content = styled.div`

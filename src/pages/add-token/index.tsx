@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 
-import { Logo, WalletName, Text, Button, Input, Modal } from '@/components';
+import { Button, Input, Logo, Modal, Text, WalletName } from '@/components';
 import { MODAL_MSG_TOKEN_DUPLICITY } from '@/constants';
 import { useWallet } from '@/hooks';
 import * as S from '@/styles/pages/AddToken.styles';
@@ -48,7 +48,7 @@ const AddToken = () => {
   return (
     <>
       <Head>
-        <title>kwallet | Add Token</title>
+        <title>Wish Wallet | Add Token</title>
       </Head>
 
       <Modal
@@ -69,7 +69,7 @@ const AddToken = () => {
           <S.Content>
             <S.ContentHeader>
               <Text highlight>Add Token</Text>
-              <Button rounded title="Voltar" onClick={handleGoBack} />
+              <Button rounded title="Go back" onClick={handleGoBack} />
             </S.ContentHeader>
 
             <S.Form onSubmit={handleSubmit(handleAddToken)}>

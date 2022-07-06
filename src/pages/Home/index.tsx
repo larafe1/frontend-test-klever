@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>kwallet | Home</title>
+        <title>Wish Wallet | Home</title>
       </Head>
 
       <S.Wrapper>

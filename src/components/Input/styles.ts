@@ -26,6 +26,10 @@ export const Input = styled.input<Pick<InputProps, 'error'>>`
   &:focus {
     border: 2px solid ${({ theme }) => theme.colors.primaryDark};
   }
+
+  @media (max-width: 445px) {
+    width: 35rem;
+  }
 `;
 
 export const Error = styled.p`

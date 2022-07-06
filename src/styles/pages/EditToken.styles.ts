@@ -38,6 +38,14 @@ export const Content = styled.div`
   align-items: center;
 
   margin-top: 8rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: 1000px) {
+    width: 70%;
+  }
+  @media (max-width: 565px) {
+    width: 90%;
+  }
 `;
 
 export const ContentHeader = styled.div`

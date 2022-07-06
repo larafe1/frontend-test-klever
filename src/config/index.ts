@@ -1,3 +1,3 @@
 export default {
-  tokensWalletStorageKey: '@kwallet:tokens'
+  tokensWalletStorageKey: '@wishwallet:tokens'
 } as const;
