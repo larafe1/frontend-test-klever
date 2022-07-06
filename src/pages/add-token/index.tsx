@@ -48,7 +48,7 @@ const AddToken = () => {
   return (
     <>
       <Head>
-        <title>kwallet | Add Token</title>
+        <title>Wish Wallet | Add Token</title>
       </Head>
 
       <Modal

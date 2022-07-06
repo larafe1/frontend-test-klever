@@ -1,4 +1,4 @@
-## Klever - Front-end Test (Kwallet)
+## Klever - Front-end Test (Wish Wallet)
 
 Hey, thanks for the opportunity and I hope you all enjoy the result. Let's get started!
 
@@ -14,7 +14,7 @@ The project was built using the following technologies:
 The project is deployed on Vercel, but you can also run it locally. For that you need to clone this repository and install the dependencies:
 
 ```elm
-git clone https://github.com/larafe1/kwallet.git && cd kwallet
+git clone https://github.com/larafe1/Klever-FrontEnd-Test.git && cd Klever-FrontEnd-Test
 
 -- Using npm:
 npm install

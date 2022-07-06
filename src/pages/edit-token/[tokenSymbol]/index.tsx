@@ -79,7 +79,7 @@ const EditToken = () => {
   return (
     <>
       <Head>
-        <title>kwallet | Edit Token</title>
+        <title>Wish Wallet | Edit Token</title>
       </Head>
 
       <Modal

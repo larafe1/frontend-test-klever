@@ -10,7 +10,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <Head>
-        <title>kwallet</title>
+        <title>Wish Wallet</title>
         <meta name="theme-color" content="#06092B" />
         <meta
           name="description"
